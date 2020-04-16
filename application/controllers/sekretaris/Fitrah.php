@@ -1,0 +1,80 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Fitrah extends CI_Controller {
+	public function __construct() {
+		parent::__construct();
+		if($this->session->userdata('status') == FALSE || $this->session->userdata('level') != 2 ){
+				redirect(base_url("login"));
+			}
+		/*$this->load->library('Pdf');*/
+	 }
+
+	public function index()
+	{
+
+		$data['name'] 			= $this->session->userdata('nama');
+		$data['lengkap'] 		= $this->session->userdata('lengkap');
+		$data['conten'] 		= 'conten_sekretaris/zakat_fitrah';
+		$data['title'] 			= 'Zakat Fitrah';
+		$data['fitrah']			= $this->M_data->zakat_fitrah();
+		$this->load->view('template_sekretaris/conten',$data);
+	}
+
+	public function tambah_data_zakat_fitrah()
+	{
+		$date = date("Y-m-d");
+		$table='tbl_zakat_fitrah';
+		$data= array('nama_pemberi_zakat' 	=> $this->input->post('pemberi_zakat'),
+						'besaran_jiwa' 		=> $this->input->post('jiwa'),
+						'beras' 			=> $this->input->post('beras'),
+						'uang' 				=> $this->input->post('uang'),
+						'alamat' 			=> $this->input->post('alamat'),
+						'tanggal'			=> $date,
+						'petugas'			=> $this->input->post('petugas')
+						 );
+		$this->M_data->simpan_data($table,$data);
+		redirect('sekretaris/Fitrah');
+	}
+
+	function vedit($id)
+	{
+		$data['name'] 			= $this->session->userdata('nama');
+		$data['lengkap'] 		= $this->session->userdata('lengkap');
+		$data['conten'] = 'conten_sekretaris/edit_zakat_fitrah';
+		$data['title'] = "Edit Data";
+		$data['edit_data'] = $this->M_data->get_data_by_id('tbl_zakat_fitrah', array('id_zakat_fitrah'=> $id));
+		$this->load->view('template_sekretaris/conten',$data);
+	}
+
+	public function update_data($id){
+		$date = date("Y-m-d");
+		$table='tbl_zakat_fitrah';
+		$data= array(
+						'nama_pemberi_zakat' => $this->input->post('pemberi_zakat'),
+						'besaran_jiwa' => $this->input->post('jiwa'),
+						'beras' => $this->input->post('beras'),
+						'uang' => $this->input->post('uang'),
+						'alamat' => $this->input->post('alamat'),
+						'petugas' => $this->input->post('petugas'),
+						'tanggal' => $date
+						 );
+		$this->M_data->update_data($table,$data,array('id_zakat_fitrah' => $id));
+		redirect('sekretaris/Fitrah');
+	}
+
+	/*public function cetak_laporan_fitrah($id){
+		$date = date("Y-m-d");
+		$title_page = 'Laporan Zakat Fitrah'.$date;
+		$data['cetak_laporan_fitrah'] = $this->M_data->get_data_by_id('tbl_zakat_fitrah', array('id_zakat_fitrah'=> $id));
+		$html= $this->load->view('conten/laporan_zakat_fitrah', $data,true);
+		$this->pdf->pdf_create($html,$title_page,'A4','portaid');
+	}*/
+
+	public function hapus_data($id){
+		$table = 'tbl_zakat_fitrah';
+		$where = array('id_zakat_fitrah' => $id);
+		$this->M_data->hapus_data($table,$where);
+		redirect('sekretaris/Fitrah');
+	}
+}
