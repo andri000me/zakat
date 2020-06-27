@@ -40,8 +40,12 @@
                   <li><a href="<?php echo base_url('admin/penerima') ?>"><i class="fa  fa-wheelchair"></i> Data Penerima Zakat </a>
                   </li>
 
-                  <li><a href="<?php echo base_url('admin/Laporan') ?>"><i class="fa fa-book"></i> Laporan Zakat </a>
+                  <li><a href="<?php echo base_url('admin/donatur') ?>"><i class="fa  fa-plus-square"></i> Data Donatur Zakat </a>
                   </li>
+
+                  <li><a href="<?php echo base_url('admin/Panitia') ?>"><i class="fa fa-users"></i> Data Panitia </a></li>
+
+                  <li><a href="<?php echo base_url('admin/Laporan') ?>"><i class="fa fa-book"></i> Laporan Zakat </a></li>
 
                   <li><a href="<?php echo base_url('admin/Setting/kop_laporan') ?>"><i class="fa fa-gear"></i> Setting Kop </a></li>
 

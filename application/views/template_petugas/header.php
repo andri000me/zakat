@@ -28,4 +28,10 @@
 
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url('') ?>assets/template/build/css/custom.min.css" rel="stylesheet">
+
+    <?php 
+    if (isset($header_css)) {
+        foreach ($header_css as $hcss) { ?>
+            <link rel="stylesheet" type="text/css" href="<?= base_url($hcss) ?>">
+    <?php } } ?>
   </head>

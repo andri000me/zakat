@@ -1,4 +1,5 @@
 <div class="right_col" role="main">
+  <div class="flash-kop" data-flashdata="<?= $this->session->flashdata('kop') ?>"></div>
           <div class="">
             <div class="page-title">
               <div class="title_left">
@@ -50,10 +51,10 @@
                       <input type="text" class="form-control" name="header" value="<?php echo $row->jabatan_laporan; ?>" />
                       <label for="email">Pemilik Jabatan :</label>
                       <input type="text" class="form-control" name="bidang" value="<?php echo $row->nama_pemilik_jabatan; ?>" /><br>
-                      <!-- <label for="email">Tahun Hijriyah :</label>
+                      <label for="email">Tahun Hijriyah :</label>
                       <input type="text" class="form-control" name="hijriyah" value="<?php echo $row->hijriyah; ?>" /><br>
                       <label for="email">Tahun Masehi :</label>
-                      <input type="text" class="form-control" name="masehi" value="<?php echo $row->masehi; ?>" /><br> -->
+                      <input type="text" class="form-control" name="masehi" value="<?php echo $row->masehi; ?>" /><br>
                       <label for="email">Jabatan Sekretaris :</label>
                       <input type="text" class="form-control" name="jabatan" value="<?php echo $row->jabatan; ?>" /><br>
                       <label for="email">Nama Sekretaris :</label>

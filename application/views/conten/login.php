@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Apliaksi Zakat </title>
+    <title><?php echo $title; ?></title>
 
     <!-- Bootstrap -->
     <link href="<?php echo base_url('') ?>assets/template/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -24,6 +24,8 @@
   </head>
 
   <body class="login">
+    <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash') ?>"></div>
+    
     <div>
       <a class="hiddenanchor" id="signup"></a>
       <a class="hiddenanchor" id="signin"></a>
@@ -61,5 +63,9 @@
         </div>
       </div>
     </div>
+    
+    <script type="text/javascript" src="<?= base_url('assets/template/vendors/jquery/dist/jquery.min.js') ?>"></script>    
+    <script type="text/javascript" src="<?= base_url('assets/js/sweetalert2.all.min.js') ?>"></script>
+    <script type="text/javascript" src="<?= base_url('assets/js/alert.js') ?>"></script>
   </body>
 </html>

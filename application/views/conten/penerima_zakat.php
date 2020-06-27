@@ -1,4 +1,13 @@
 <div class="right_col" role="main">
+  <div class="flash-penerima" data-flashdata="<?= $this->session->flashdata('penerima') ?>"></div>
+  <?php
+    if($this->session->flashdata('gagal')==TRUE){ ?>
+          <div class="flash-gagal" data-flashdata="<?= $this->session->flashdata('gagal') ?>"></div>
+    <?php } ?>
+    <?php
+    if($this->session->flashdata('berhasil')==TRUE){ ?>
+          <div class="flash-berhasil" data-flashdata="<?= $this->session->flashdata('berhasil') ?>"></div>
+    <?php } ?>
           <div class="">
             <div class="page-title">
               <div class="title_left">
@@ -42,18 +51,6 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <?php
-                      if($this->session->flashdata('gagal')==TRUE){ ?>
-                            <div class="alert alert-danger">
-                              <?php echo $this->session->flashdata('gagal') ?>
-                            </div>
-                      <?php } ?>
-                      <?php
-                      if($this->session->flashdata('berhasil')==TRUE){ ?>
-                            <div class="alert alert-success">
-                              <?php echo $this->session->flashdata('berhasil') ?>
-                            </div>
-                      <?php } ?>
                       <button type="button" class="btn btn-success" data-toggle="modal" data-target=".bs-example-modal-smTambah"><i class="fa fa-plus"></i> | Tambah Data</button>
                       <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-smImport"><i class="fa fa-upload"></i> | Import Data</button>
 
@@ -83,7 +80,7 @@
                           <td><?php echo $row->nama_koor; ?></td>
                           <td>
                           	<button type="button" class="btn btn-warning" title="Edit Data" data-toggle="modal" data-target=".bs-example-modal-smEdit<?php echo $no++; ?>"><i class="fa fa-edit"></i></button>
-                          	<a href="<?php echo base_url('admin/penerima/hapus_data_penerima/'.$row->id_penerima) ?>"><button type="button" class="btn btn-danger" title="Hapus Data" onclick="return confirm('Data Akan dihapus?')"><i class="fa fa-trash"></i></button></a>
+                          	<a class="btn btn-danger hapus-penerima" title="Hapus Data Penerima Zakat" href="<?php echo base_url('admin/penerima/hapus_data_penerima/'.$row->id_penerima) ?>"><i class="fa fa-trash"></i></a>
                           </td>
                         </tr>
                         <?php } ?>

@@ -183,6 +183,9 @@ if (isset($_POST['cek'])) {
   </tr>
 </table>
 
+<script>
+    window.print();
+  </script>
 
 </body>
 </html>

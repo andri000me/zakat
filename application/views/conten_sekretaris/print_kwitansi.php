@@ -62,15 +62,19 @@ foreach ($data_peserta->result() as $row) { ?>
    				<td width="7%"><?php echo $kota; ?>, </td>
    				<td width="30%" colspan="2" align="left"><?php echo date('d F Y') ; ?></td>
    			</tr>
-   			<tr>
-   				<td colspan="3">Yang menerima,</td>
-   			</tr>
-   			<tr>
-   				<td colspan="3" height="30px"></td>
-   			</tr>
-   			<tr>
-   				<td colspan="3"><?php echo $lengkap; ?></td>
-   			</tr>
+   			<?php 
+        foreach ($ttd->result() as $key => $value) { ?>
+          
+        <tr>
+          <td colspan="3"><?= $value->jabatan_laporan ?>,</td>
+        </tr>
+        <tr>
+          <td colspan="3" height="30px"></td>
+        </tr>
+        <tr>
+          <td colspan="3"><?php echo $value->nama_pemilik_jabatan; ?></td>
+        </tr>
+        <?php } ?>
    		</table>
    </td>  
  </tr>  

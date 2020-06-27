@@ -1,4 +1,5 @@
 <div class="right_col" role="main">
+  <div class="flash-koor" data-flashdata='<?= $this->session->flashdata('koor') ?>'></div>
           <div class="">
             <div class="page-title">
               <div class="title_left">
@@ -71,7 +72,7 @@
                           <td><?php echo $row->ket_pass; ?></td>
                           <td>
                             <button type="button" class="btn btn-warning" title="edit user" data-toggle="modal" data-target=".bs-example-modal-smEdit<?php echo $no++; ?>"><i class="fa fa-edit"></i></button>
-                            <a href="<?php echo base_url('admin/Setting/hapus_user/'.$row->id_koor) ?>"><button type="button" class="btn btn-danger" title="hapus user"><i class="fa fa-trash"></i></button></a>
+                            <a class="btn btn-danger hapus-user" title="Hapus User Koordinator" href="<?php echo base_url('admin/Setting/hapus_user/'.$row->id_koor) ?>"><i class="fa fa-trash"></i></a>
                           </td>
                         </tr>
 

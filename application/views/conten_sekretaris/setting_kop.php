@@ -1,4 +1,5 @@
 <div class="right_col" role="main">
+  <div class="flash-kop" data-flashdata='<?= $this->session->flashdata('kop') ?>'></div>
           <div class="">
             <div class="page-title">
               <div class="title_left">
@@ -42,7 +43,7 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <form method="post" action="<?php echo base_url('admin/setting/edit') ?>">
+                    <form method="post" action="<?php echo base_url('sekretaris/setting/edit') ?>">
                     <?php 
                     foreach ($kop->result() as $row) { ?>
                       

@@ -13,15 +13,43 @@ class Penerima extends CI_Controller {
 
 	public function index()
 	{
+		$data = [
+			'name'		=> $this->session->userdata('nama'),
+			'lengkap'	=> $this->session->userdata('lengkap'),
+			'id'		=> $this->session->userdata('id_koor'),
+			'conten'	=> 'conten_koor/penerima_zakat',
+			'title'		=> 'Data Penerima Zakat',
+			'koor'		=> $this->M_data->get_data('tbl_koordinator'),
+			'master_penerima' => $this->M_data->get_data('tbl_master_penerima'),
+			'tampil'	=> $this->M_data->penerima_zakat_koor($this->session->userdata('id_koor')),
+			'header_css'=> array(
+				'assets/template/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css',
+				'assets/template/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css',
+				'assets/template/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css',
+				'assets/template/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css',
+				'assets/template/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css',
+			),
+			'footer_js' => array(
+				'assets/template/vendors/datatables.net/js/jquery.dataTables.min.js',
+				'assets/template/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js',
+				'assets/template/vendors/datatables.net-buttons/js/dataTables.buttons.min.js',
+				'assets/template/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js',
+				'assets/template/vendors/datatables.net-buttons/js/buttons.flash.min.js',
+				'assets/template/vendors/datatables.net-buttons/js/buttons.html5.min.js',
+				'assets/template/vendors/datatables.net-buttons/js/buttons.print.min.js',
+				'assets/template/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js',
+				'assets/template/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js',
+				'assets/template/vendors/datatables.net-responsive/js/dataTables.responsive.min.js',
+				'assets/template/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js',
+				'assets/template/vendors/datatables.net-scroller/js/dataTables.scroller.min.js',
+				'assets/template/vendors/jszip/dist/jszip.min.js',
+				'assets/template/vendors/pdfmake/build/pdfmake.min.js',
+				'assets/template/vendors/pdfmake/build/vfs_fonts.js',
+				'assets/js/sweetalert2.all.min.js',
+				'assets/js/alert.js'
+			)
+		];
 
-		$data['name'] 			= $this->session->userdata('nama');
-		$data['lengkap'] 		= $this->session->userdata('lengkap');
-		$data['id']				= $this->session->userdata('id_koor');
-		$data['conten'] 		= 'conten_koor/penerima_zakat';
-		$data['title'] 			= 'Data Penerima Zakat';
-		$data['koor']			= $this->M_data->get_data('tbl_koordinator');
-		$data['master_penerima']= $this->M_data->get_data('tbl_master_penerima');
-		$data['tampil']			= $this->M_data->penerima_zakat_koor($this->session->userdata('id_koor'));
 		$this->load->view('template_koor/conten',$data);
 	}
 
@@ -34,6 +62,7 @@ class Penerima extends CI_Controller {
 						'koordinator' 	 => $this->input->post('koor')
 						 );
 		$this->M_data->simpan_data($table,$data);
+		$this->session->set_flashdata('penerima', 'Ditambah');
 		redirect('koor/penerima');
 	}
 
@@ -44,6 +73,7 @@ class Penerima extends CI_Controller {
 						'ket_penerima' 	 => $this->input->post('ket_penerima')
 						 );
 		$this->M_data->update_data($table,$data,array('id_penerima' => $id));
+		$this->session->set_flashdata('penerima', 'Diubah');
 		redirect('koor/penerima');
 	}
 
@@ -52,6 +82,7 @@ class Penerima extends CI_Controller {
 		$table = 'tbl_penerima_zakat';		
 		$where = array('id_penerima' => $id);
 		$this->M_data->hapus_data($table,$where);
+		$this->session->set_flashdata('penerima', 'Dihapus');
 		redirect('koor/penerima');
 	}
 

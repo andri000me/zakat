@@ -20,7 +20,7 @@
             <div class="clearfix"></div>
 
             <div class="row">
-              <a onclick="return confirm('Backup Data?')" style="color: #000000 " href="<?php echo base_url('admin/setting/backup') ?>">
+              <a class="tombol-backup" style="color: #000000 " href="<?php echo base_url('admin/setting/backup') ?>">
               <div class="animated flipInY col-lg-6 col-md-12 col-sm-12 col-xs-12">
                 <div class="tile-stats">
                   <div class="icon"><i class="fa fa-floppy-o fa-5x"></i></div>

@@ -61,6 +61,27 @@
 
               <div class="animated flipInY col-lg-6 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats">
+                  <div class="icon"><i class="fa fa-money"></i></div>
+                  <?php 
+                    foreach ($nominal_donatur->result() as $row) { ?>
+                    <div class="count">Rp. <?php echo number_format($row->total); ?>,-</div>
+                    <?php } ?>
+                    <h3>Nominal Donatur</h3>
+                    <p>Jumlah Nominal yang Terkumpul dari donatur</p>
+                </div>
+              </div>
+
+              <div class="animated flipInY col-lg-6 col-md-3 col-sm-6 col-xs-12">
+                <div class="tile-stats">
+                  <div class="icon"><i class="fa  fa-child"></i></div>
+                  <div class="count"><?php echo $jumlah_donatur; ?> Orang</div>
+                  <h3>Jumlah Pemberi Donatur</h3>
+                  <p>Jumlah Pemberi Donatur saat ini</p>
+                </div>
+              </div>
+
+              <div class="animated flipInY col-lg-6 col-md-3 col-sm-6 col-xs-12">
+                <div class="tile-stats">
                   <div class="icon"><i class="fa fa-wheelchair"></i></div>
                   <div class="count"><?php echo $rt01; ?></div>
                   <h3>Jumlah Penerima RT 01</h3>

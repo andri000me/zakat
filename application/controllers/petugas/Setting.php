@@ -254,16 +254,23 @@ class Setting extends CI_Controller {
 		}
 	}
 
-	public function ubah_sandi($id){
-		$data['name'] = $this->session->userdata('nama');
-		$data['lengkap'] 		= $this->session->userdata('lengkap');
-		$data['title'] = 'Ubah Password';
-    	$data['conten']= 'conten_petugas/ubah_sandi';
-		$data['hadir']= $this->M_data->get_data_by_id('tbl_user', array('id_user' => $this->session->userdata('id_petugas')));
+	public function ubah_sandi(){
+
+		$data = [
+			'name'		=> $this->session->userdata('nama'),
+			'lengkap'	=> $this->session->userdata('lengkap'),
+			'title'		=> 'Ubah Password',
+			'conten'	=> 'conten_petugas/ubah_sandi',
+			'hadir'		=> $this->M_data->get_data_by_id('tbl_user', array('id_user' => $this->session->userdata('id_petugas'))),
+			'footer_js'	=> array(
+				'assets/js/sweetalert2.all.min.js',
+				'assets/js/alert.js'
+			)
+		];
     	$this->load->view('template_petugas/conten',$data);
 	}
 
-	public function update_sandi($id)
+	public function update_sandi()
 	{
 		$np = md5($this->input->post('newpass'));
 		$ket = $this->input->post('repeat');
@@ -271,6 +278,7 @@ class Setting extends CI_Controller {
 		$data = array('password' =>$np, 'ket_pass' => $ket);
 		$where = array('id_user' => $this->session->userdata('id_petugas'));
 		$this->M_data->update_data($table,$data,$where);
+		$this->session->set_flashdata('sandi', 'Diubah');
 		redirect('petugas/Setting/ubah_sandi');
 	}
 }

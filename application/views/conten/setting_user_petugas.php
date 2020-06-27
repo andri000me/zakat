@@ -1,4 +1,5 @@
 <div class="right_col" role="main">
+  <div class="flash-petugas" data-flashdata='<?= $this->session->flashdata('petugas') ?>'></div>
           <div class="">
             <div class="page-title">
               <div class="title_left">
@@ -42,7 +43,7 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                  	<form method="post" action="<?php echo base_url('Admin/Setting/tambah_user') ?>">
+                  	<form method="post" action="<?php echo base_url('admin/Setting/tambah_user') ?>">
                       <label for="fullname">Nama Lengkap User * :</label>
                       <input type="text" id="fullname" class="form-control" name="nama_user" required />
                       <label for="fullname">Nama Panggilan User * :</label>
@@ -120,16 +121,15 @@
             </div>
           </div>
         </div>
+      </div>
 
 <?php 
 $y=1;
 foreach ($user->result() as $row) {?>
-	
-
 <div class="modal fade bs-example-modal-sm<?php echo $y++ ?>" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-sm">
                       <div class="modal-content">
-                      	<form method="post" action="<?php echo base_url('Admin/Setting/update_user/'.$row->id_user) ?>">
+                      	<form method="post" action="<?php echo base_url('admin/Setting/update_user/'.$row->id_user) ?>">
                         <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
                           </button>
@@ -146,7 +146,7 @@ foreach ($user->result() as $row) {?>
                       	  <select class="form-control" name="jabatan">
                       	  	<option value=""></option>
                       	  	<option <?php if ($row->level == '1') {echo "selected";} ?> value="1" >Admin</option>
-                      	  	<option <?php if ($row->level == '2') {echo "selected";} ?> value="2" >Sekretarid</option>
+                      	  	<option <?php if ($row->level == '2') {echo "selected";} ?> value="2" >Sekretaris</option>
                             <option <?php if ($row->level == '4') {echo "selected";} ?> value="4" >Petugas Piket</option>
                       	  </select>
                         </div>

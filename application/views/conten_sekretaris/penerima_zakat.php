@@ -1,4 +1,13 @@
 <div class="right_col" role="main">
+  <div class="flash-penerima" data-flashdata="<?= $this->session->flashdata('penerima') ?>"></div>
+  <?php
+    if($this->session->flashdata('gagal')==TRUE){ ?>
+          <div class="flash-gagal" data-flashdata="<?= $this->session->flashdata('gagal') ?>"></div>
+    <?php } ?>
+    <?php
+    if($this->session->flashdata('berhasil')==TRUE){ ?>
+          <div class="flash-berhasil" data-flashdata="<?= $this->session->flashdata('berhasil') ?>"></div>
+    <?php } ?>
           <div class="">
             <div class="page-title">
               <div class="title_left">
@@ -83,7 +92,7 @@
                           <td><?php echo $row->nama_koor; ?></td>
                           <td>
                           	<button type="button" class="btn btn-warning" title="Edit Data" data-toggle="modal" data-target=".bs-example-modal-smEdit<?php echo $no++; ?>"><i class="fa fa-edit"></i></button>
-                          	<a href="<?php echo base_url('sekretaris/penerima/hapus_data_penerima/'.$row->id_penerima) ?>"><button type="button" class="btn btn-danger" title="Hapus Data" onclick="return confirm('Data Akan dihapus?')"><i class="fa fa-trash"></i></button></a>
+                          	<a class="hapus-penerima" href="<?php echo base_url('sekretaris/penerima/hapus_data_penerima/'.$row->id_penerima) ?>"><button type="button" class="btn btn-danger" title="Hapus Data"><i class="fa fa-trash"></i></button></a>
                           </td>
                         </tr>
                         <?php } ?>

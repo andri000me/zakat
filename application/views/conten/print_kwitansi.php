@@ -59,18 +59,22 @@ foreach ($data_peserta->result() as $row) { ?>
    <td colspan="2" valign="top" height="80" align="right">
    		<table width="40%" align="right">
    			<tr>
-   				<td width="7%"><?php echo $kota; ?>, </td>
+   				<td width="10%"><?php echo $kota; ?>, </td>
    				<td width="30%" colspan="2" align="left"><?php echo date('d F Y') ; ?></td>
    			</tr>
+        <?php 
+        foreach ($ttd->result() as $key => $value) { ?>
+          
    			<tr>
-   				<td colspan="3">Yang menerima,</td>
+   				<td colspan="3"><?= $value->jabatan_laporan ?>,</td>
    			</tr>
    			<tr>
-   				<td colspan="3" height="30px"></td>
+   				<td colspan="3" height="30px"><div align="left"><img src="<?= base_url() ?>/assets/img/ttd.png"  width="95" height="40" /></div></td>
    			</tr>
    			<tr>
-   				<td colspan="3"><?php echo $lengkap; ?></td>
+   				<td colspan="3"><?php echo $value->nama_pemilik_jabatan; ?></td>
    			</tr>
+        <?php } ?>
    		</table>
    </td>  
  </tr>  

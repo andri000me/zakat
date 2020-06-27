@@ -8,6 +8,15 @@ foreach ($lokasi->result() as $row) {
 ?>
 
 <div class="right_col" role="main">
+  <div class="flash-lokasi" data-flashdata='<?= $this->session->flashdata('lokasi') ?>'></div>
+   <?php
+      if($this->session->flashdata('gagal')==TRUE){ ?>
+            <div class="flash-gagal-gambar" data-flashdata="<?= $this->session->flashdata('gagal') ?>"></div>
+      <?php } ?>
+      <?php
+      if($this->session->flashdata('berhasil')==TRUE){ ?>
+            <div class="flash-berhasil-gambar" data-flashdata="<?= $this->session->flashdata('berhasil') ?>"></div>
+      <?php } ?>
           <div class="">
             <div class="page-title">
               <div class="title_left">
@@ -51,28 +60,7 @@ foreach ($lokasi->result() as $row) {
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                  	<?php
-                              if($this->session->flashdata('gagal')==TRUE){ ?>
-                                    <div class="alert alert-danger alert-dismissable">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                      <?php echo $this->session->flashdata('gagal') ?>
-                                    </div>
-                              <?php } ?>
-                              <?php
-                              if($this->session->flashdata('berhasil')==TRUE){ ?>
-                                    <div class="alert alert-success alert-dismissable">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                      <?php echo $this->session->flashdata('berhasil') ?>
-                                    </div>
-                              <?php } ?>
-                              <?php
-                              if($this->session->flashdata('success')==TRUE){ ?>
-                                    <div class="alert alert-success alert-dismissable">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                      <?php echo $this->session->flashdata('success') ?>
-                                    </div>
-                              <?php } ?>
-                      <form method="post" action="<?php echo base_url('admin/Setting/update_master_lokasi') ?>"  enctype="multipart/form-data" accept-charset="utf-8">
+                      <form method="post" action="<?php echo base_url('sekretaris/Setting/update_master_lokasi') ?>"  enctype="multipart/form-data" accept-charset="utf-8">
                       <label for="fullname">Logo Lokasi * :</label>
                       <input type="file" id="fullname" class="form-control" name="filefoto" />
                       <label for="fullname">Nama Lokasi * :</label>

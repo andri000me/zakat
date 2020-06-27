@@ -1,4 +1,5 @@
 <div class="right_col" role="main">
+  <div class="flash-fitrah" data-flashdata="<?= $this->session->flashdata('fitrah') ?>"></div>
           <div class="">
             <div class="page-title">
               <div class="title_left">
@@ -99,7 +100,7 @@
                           <td><?php echo $row->petugas; ?></td>
                           <td width="12%">
                             <a href="<?php echo base_url('admin/Fitrah/vedit/'.$row->id_zakat_fitrah) ?>"><button type="button" class="btn btn-warning"><i class="fa fa-edit"></i></button></a>
-                            <a href="<?php echo base_url('admin/Fitrah/hapus_data/'.$row->id_zakat_fitrah) ?>"><button type="button" class="btn btn-danger" onclick="hapus()"><i class="fa fa-trash"></i></button></a>
+                            <a class="btn btn-danger hapus-fitrah" title="Hapus Data" href="<?php echo base_url('admin/Fitrah/hapus_data/'.$row->id_zakat_fitrah) ?>"><i class="fa fa-trash"></i></button></a>
                           </td>
                         </tr>
                         <?php } ?>

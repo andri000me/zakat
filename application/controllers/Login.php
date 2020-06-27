@@ -5,7 +5,10 @@ class Login extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('conten/login');
+		$data = [
+	      'title' => 'Login Page'
+    ];
+		$this->load->view('conten/login', $data);
 	}
 
 	public function login_form(){
@@ -108,6 +111,8 @@ class Login extends CI_Controller {
 			redirect(base_url("koor/dashboard"));
 		}
 		else{
+			$this->session->set_flashdata('flash', 'Salah');
+
 			redirect(base_url('Login'));
 		}
 	}

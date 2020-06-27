@@ -56,61 +56,13 @@
     <script src="<?php echo base_url('') ?>assets/template/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
 	
     <!-- Datatables -->
-    <script src="<?php echo base_url('') ?>assets/template/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="<?php echo base_url('') ?>assets/template/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-    <script src="<?php echo base_url('') ?>assets/template/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="<?php echo base_url('') ?>assets/template/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
-    <script src="<?php echo base_url('') ?>assets/template/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
-    <script src="<?php echo base_url('') ?>assets/template/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
-    <script src="<?php echo base_url('') ?>assets/template/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
-    <script src="<?php echo base_url('') ?>assets/template/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
-    <script src="<?php echo base_url('') ?>assets/template/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
-    <script src="<?php echo base_url('') ?>assets/template/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="<?php echo base_url('') ?>assets/template/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
-    <script src="<?php echo base_url('') ?>assets/template/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
-    <script src="<?php echo base_url('') ?>assets/template/vendors/jszip/dist/jszip.min.js"></script>
-    <script src="<?php echo base_url('') ?>assets/template/vendors/pdfmake/build/pdfmake.min.js"></script>
-    <script src="<?php echo base_url('') ?>assets/template/vendors/pdfmake/build/vfs_fonts.js"></script>
+    <?php 
+    if (isset($footer_js)) {
+        foreach ($footer_js as $fjs) { ?>
+            <script type="text/javascript" src="<?= base_url($fjs) ?>"></script>
+    <?php } } ?>
 
-    <!-- Select 2 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-    <script type="text/javascript">
-    $(document).ready(function() {
-        $('.select2').select2();
-    });
-
-    </script>
-
-    <script>
-    $('#myDatepicker').datetimepicker();
     
-    $('#myDatepicker2').datetimepicker({
-        format: 'DD.MM.YYYY'
-    });
-    
-    $('#myDatepicker3').datetimepicker({
-        format: 'hh:mm A'
-    });
-    
-    $('#myDatepicker4').datetimepicker({
-        ignoreReadonly: true,
-        allowInputToggle: true
-    });
-
-    $('#datetimepicker6').datetimepicker();
-    
-    $('#datetimepicker7').datetimepicker({
-        useCurrent: false
-    });
-    
-    $("#datetimepicker6").on("dp.change", function(e) {
-        $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
-    });
-    
-    $("#datetimepicker7").on("dp.change", function(e) {
-        $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
-    });
-</script>
 <script type="text/javascript">
     function jumlah_zakat() 
     {

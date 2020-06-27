@@ -30,6 +30,8 @@
                 <ul class="nav side-menu">
                   <li><a href="<?php echo base_url('koor/Dashboard') ?>"><i class="fa fa-home"></i> Dashboard </a>
                   </li>
+                  <li><a href="<?php echo base_url('koor/donatur') ?>"><i class="fa  fa-plus-square"></i> Data Donatur Zakat </a>
+                  </li>
 
                   <!-- <li><a href="<?php echo base_url('koor/fitrah') ?>"><i class="fa  fa-heart"></i> Zakat Fitrah </a>
                   </li>
@@ -101,6 +103,7 @@
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
+                    <li><a href="<?php echo base_url('koor/setting/ubah_sandi') ?>"><i class="fa fa-user pull-right"></i> Setting Profile</a></li>
                     <li><a href="<?php echo base_url('login/logout') ?>"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
                 </li>

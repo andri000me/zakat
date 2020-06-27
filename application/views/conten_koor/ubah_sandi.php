@@ -7,6 +7,7 @@ foreach ($hadir->result() as $row) {
 }
 ?>
 <div class="right_col" role="main">
+  <div class="flash-sandi" data-flashdata='<?= $this->session->flashdata('sandi') ?>'></div>
           <div class="">
             <div class="page-title">
               <div class="title_left">

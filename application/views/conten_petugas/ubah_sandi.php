@@ -7,6 +7,7 @@ foreach ($hadir->result() as $row) {
 }
 ?>
 <div class="right_col" role="main">
+  <div class="flash-sandi" data-flashdata='<?= $this->session->flashdata('sandi') ?>'></div>
           <div class="">
             <div class="page-title">
               <div class="title_left">
@@ -60,7 +61,8 @@ foreach ($hadir->result() as $row) {
                       <label for="fullname">Password Lama * :</label>
                       <input type="password" id="fullname" class="form-control" name="oldpass" required value="<?= $oldpass ?>" />
                       <label for="fullname">Password Baru * :</label>
-                      <input type="password" id="fullname" class="form-control" name="newpass" required />
+                      <input type="password" id="newpass" class="form-control" name="newpass" />
+
                       <label for="fullname">Ulangi Password * :</label>
                       <input type="password" id="fullname" class="form-control" name="repeat" required />
                       <br>
@@ -72,3 +74,4 @@ foreach ($hadir->result() as $row) {
             </div>
           </div>
         </div>
+

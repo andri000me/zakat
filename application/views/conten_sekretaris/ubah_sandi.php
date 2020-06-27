@@ -7,6 +7,7 @@ foreach ($hadir->result() as $row) {
 }
 ?>
 <div class="right_col" role="main">
+  <div class="flash-sandi" data-flashdata='<?= $this->session->flashdata('sandi') ?>'></div>
           <div class="">
             <div class="page-title">
               <div class="title_left">
@@ -64,7 +65,7 @@ foreach ($hadir->result() as $row) {
                       <label for="fullname">Ulangi Password * :</label>
                       <input type="password" id="fullname" class="form-control" name="repeat" required />
                       <br>
-                      <button type="submit" class="btn btn-warning fa fa-upload"> | Update</button>
+                      <button type="submit" class="btn btn-warning fa fa-upload form-ubah"> | Update</button>
                   </form>
                   </div>
                 </div>

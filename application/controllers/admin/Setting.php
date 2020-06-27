@@ -12,11 +12,17 @@ class Setting extends CI_Controller {
 
 	public function index()
 	{
-		$data['name'] 			= $this->session->userdata('nama');
-		$data['lengkap'] 		= $this->session->userdata('lengkap');
-		$data['conten'] = 'conten/setting_user_petugas';
-		$data['title'] = 'Setting User Petugas';
-		$data['user'] = $this->M_data->get_data('tbl_user');
+		$data = [
+			'name'		=> $this->session->userdata('nama'),
+			'lengkap'	=> $this->session->userdata('lengkap'),
+			'conten'	=> 'conten/setting_user_petugas',
+			'title'		=> 'Setting User Petugas',
+			'user'		=> $this->M_data->get_data('tbl_user'),
+			'footer_js' => array(
+				'assets/js/sweetalert2.all.min.js',
+				'assets/js/alert.js'
+			)
+		];
 		$this->load->view('template/conten',$data);
 	}
 
@@ -31,6 +37,7 @@ class Setting extends CI_Controller {
 						'level' 		=> $this->input->post('jabatan')
 						 );
 		$this->M_data->simpan_data($table,$data);
+		$this->session->set_flashdata('petugas','Ditambah');
 		redirect('admin/setting');
 	}
 
@@ -43,16 +50,45 @@ class Setting extends CI_Controller {
 						'level' 		=> $this->input->post('jabatan')
 						 );
 		$this->M_data->update_data($table,$data,array('id_user' => $id));
+		$this->session->set_flashdata('petugas','Diubah');
 		redirect('admin/Setting');
 	}
 
 	public function user_koor()
 	{
-		$data['name'] 			= $this->session->userdata('nama');
-		$data['lengkap'] 		= $this->session->userdata('lengkap');
-		$data['conten'] = 'conten/setting_user_koor';
-		$data['title'] = 'Setting User Koordinator';
-		$data['koor'] = $this->M_data->get_data('tbl_koordinator');
+		$data = [
+			'name'		=> $this->session->userdata('nama'),
+			'lengkap'	=> $this->session->userdata('lengkap'),
+			'conten'	=> 'conten/setting_user_koor',
+			'title'		=> 'Setting User Koordinator',
+			'koor'		=> $this->M_data->get_data('tbl_koordinator'),
+			'header_css'=> array(
+				'assets/template/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css',
+				'assets/template/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css',
+				'assets/template/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css',
+				'assets/template/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css',
+				'assets/template/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css',
+			),
+			'footer_js' => array(
+				'assets/template/vendors/datatables.net/js/jquery.dataTables.min.js',
+				'assets/template/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js',
+				'assets/template/vendors/datatables.net-buttons/js/dataTables.buttons.min.js',
+				'assets/template/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js',
+				'assets/template/vendors/datatables.net-buttons/js/buttons.flash.min.js',
+				'assets/template/vendors/datatables.net-buttons/js/buttons.html5.min.js',
+				'assets/template/vendors/datatables.net-buttons/js/buttons.print.min.js',
+				'assets/template/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js',
+				'assets/template/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js',
+				'assets/template/vendors/datatables.net-responsive/js/dataTables.responsive.min.js',
+				'assets/template/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js',
+				'assets/template/vendors/datatables.net-scroller/js/dataTables.scroller.min.js',
+				'assets/template/vendors/jszip/dist/jszip.min.js',
+				'assets/template/vendors/pdfmake/build/pdfmake.min.js',
+				'assets/template/vendors/pdfmake/build/vfs_fonts.js',
+				'assets/js/sweetalert2.all.min.js',
+				'assets/js/alert.js'
+			)
+		];
 		$this->load->view('template/conten',$data);
 	}
 
@@ -68,6 +104,7 @@ class Setting extends CI_Controller {
 						'level'			=> '3'
 						 );
 		$this->M_data->simpan_data($table,$data);
+		$this->session->set_flashdata('koor','Ditambah');
 		redirect('admin/setting/user_koor');
 	}
 
@@ -82,6 +119,7 @@ class Setting extends CI_Controller {
 						'level'			=> '3'
 						 );
 		$this->M_data->update_data($table,$data,array('id_koor' => $id));
+		$this->session->set_flashdata('koor','Diubah');
 		redirect('admin/Setting/user_koor');
 	}
 
@@ -90,16 +128,24 @@ class Setting extends CI_Controller {
 		$table = 'tbl_koordinator';		
 		$where = array('id_koor' => $id);
 		$this->M_data->hapus_data($table,$where);
+		$this->session->set_flashdata('koor','Dihapus');
 		redirect('admin/Setting/user_koor');
 	}
 
 	public function kop_laporan()
 	{
-		$data['name'] 			= $this->session->userdata('nama');
-		$data['lengkap'] 		= $this->session->userdata('lengkap');
-		$data['conten'] = 'conten/setting_kop';
-		$data['title'] = 'Setting Kop Laporan';
-		$data['kop']= $this->M_data->get_data_by_id('tbl_master_laporan', array('id_laporan' => 1 ));
+		$data = [
+			'nama'		=> $this->session->userdata('nama'),
+			'lengkap'	=> $this->session->userdata('lengkap'),
+			'conten'	=> 'conten/setting_kop',
+			'title'		=> 'Setting Kop Laporan',
+			'kop'		=> $this->M_data->get_data_by_id('tbl_master_laporan', array('id_laporan' => 1 )),
+			'footer_js' => array(
+				'assets/js/sweetalert2.all.min.js',
+				'assets/js/alert.js'
+			)
+		];
+		
 		$this->load->view('template/conten',$data);
 	}
 
@@ -117,19 +163,28 @@ class Setting extends CI_Controller {
 			'jabatan_laporan' => $header,
 			'nama_pemilik_jabatan' => $bidang,
 			'jabatan' => $jabatan,
-			'nama_sekretaris' => $sekretaris
+			'nama_sekretaris' => $sekretaris,
+			'masehi' => $masehi,
+			'hijriyah'	=> $hijriyah
 		);
 		$this->M_data->update_data($table, $data, $where);
+		$this->session->set_flashdata('kop', 'Diubah');
 		redirect('admin/Setting/kop_laporan');
 	}
 
 	public function master_kwitansi()
 	{
-		$data['name'] 			= $this->session->userdata('nama');
-		$data['lengkap'] 		= $this->session->userdata('lengkap');
-		$data['conten'] 	 = 'conten/master_kwitansi';
-		$data['title'] 		 = 'Setting Master Kwitansi';
-		$data['get_data'] 	 = $this->M_data->get_data_by_id('tbl_master_kwitansi',array('id_kwitansi' => 1 ));
+		$data = [
+			'name'		=> $this->session->userdata('nama'),
+			'lengkap'	=> $this->session->userdata('lengkap'),
+			'conten'	=> 'conten/master_kwitansi',
+			'title'		=> 'Setting Master Kwitansi',
+			'get_data'	=> $this->M_data->get_data_by_id('tbl_master_kwitansi',array('id_kwitansi' => 1 )),
+			'footer_js' => array(
+				'assets/js/sweetalert2.all.min.js',
+				'assets/js/alert.js'
+			)
+		];
 		$this->load->view('template/conten',$data);
 	}
 
@@ -165,11 +220,12 @@ class Setting extends CI_Controller {
 						$where = array('id_kwitansi'=> 1);
 						$this->M_data->update_data('tbl_master_kwitansi',$data,$where); //akses model untuk menyimpan ke database
 						//pesan yang muncul jika berhasil diupload pada session flashdata
-						$this->session->set_flashdata("berhasil", "<center><b>Update Foto & Data Success</b></center>");
+						$this->session->set_flashdata('berhasil', 'Diupdate');
 						redirect('admin/setting/master_kwitansi');
 					}else{
 						//pesan yang muncul jika terdapat error dimasukkan pada session flashdata
-						$this->session->set_flashdata("Gagal", "<center><b>Update Foto & Data Gagal</b></center>");
+						$this->session->set_flashdata('gagal', 'Diupdate');
+						
 						redirect('admin/setting/master_kwitansi'); //jika gagal maka akan ditampilkan form upload
 					}
 			}
@@ -184,18 +240,26 @@ class Setting extends CI_Controller {
 				'id_kwitansi'=>1
 			);
 			$this->M_data->update_data('tbl_master_kwitansi',$data,$where);
-			$this->session->set_flashdata("success", "<center><b>Update Data Success</b></center>");
+			$this->session->set_flashdata('data', 'Diperbarui');
+			//$this->session->set_flashdata("success", "<center><b>Update Data Success</b></center>");
 			redirect('admin/setting/master_kwitansi');
 		}
 	}
 
 	public function master_lokasi()
 	{
-		$data['name'] 			= $this->session->userdata('nama');
-		$data['lengkap'] 		= $this->session->userdata('lengkap');
-		$data['conten'] 	 	= 'conten/setting_lokasi';
-		$data['title'] 		 	= 'Setting Master Lokasi';
-		$data['lokasi'] 	 	= $this->M_data->get_data_by_id('tbl_master_lokasi',array('id_lokasi' => 1 ));
+		$data = [
+			'name'		=> $this->session->userdata('nama'),
+			'lengkap'	=> $this->session->userdata('lengkap'),
+			'conten'	=> 'conten/setting_lokasi',
+			'title'		=> 'Setting Master Lokasi',
+			'lokasi'	=> $this->M_data->get_data_by_id('tbl_master_lokasi',array('id_lokasi' => 1 )),
+			'footer_js' => array(
+				'assets/js/sweetalert2.all.min.js',
+				'assets/js/alert.js'
+			)
+
+		];
 		$this->load->view('template/conten',$data);
 	}
 
@@ -230,11 +294,11 @@ class Setting extends CI_Controller {
 						$where = array('id_lokasi'=> 1);
 						$this->M_data->update_data('tbl_master_lokasi',$data,$where); //akses model untuk menyimpan ke database
 						//pesan yang muncul jika berhasil diupload pada session flashdata
-						$this->session->set_flashdata("berhasil", "<center><b>Update Logo / Data Success</b></center>");
+						$this->session->set_flashdata('berhasil', 'Diperbarui');
 						redirect('admin/setting/master_lokasi');
 					}else{
 						//pesan yang muncul jika terdapat error dimasukkan pada session flashdata
-						$this->session->set_flashdata("Gagal", "<center><b>Update Logo / Data Gagal</b></center>");
+						$this->session->set_flashdata('gagal','Diperbarui');
 						redirect('admin/setting/master_lokasi'); //jika gagal maka akan ditampilkan form upload
 					}
 			}
@@ -249,17 +313,24 @@ class Setting extends CI_Controller {
 				'id_lokasi'=>1
 			);
 			$this->M_data->update_data('tbl_master_lokasi',$data,$where);
-			$this->session->set_flashdata("success", "<center><b>Update Data Lokasi Success</b></center>");
+			$this->session->set_flashdata('lokasi','Diperbarui');
 			redirect('admin/setting/master_lokasi');
 		}
 	}
 
 	public function backup_data()
 	{
-		$data['name'] 			= $this->session->userdata('nama');
-		$data['lengkap'] 		= $this->session->userdata('lengkap');
-		$data['conten'] 	 	= 'conten/backup_data';
-		$data['title'] 		 	= 'Backup All Data';
+		$data = [
+			'name'		=> $this->session->userdata('nama'),
+			'lengkap'	=> $this->session->userdata('lengkap'),
+			'conten'	=> 'conten/backup_data',
+			'title'		=> 'Backup All Data',
+			'footer_js' => array(
+				'assets/js/sweetalert2.all.min.js',
+				'assets/js/alert.js'
+			)
+		];
+		
 		$this->load->view('template/conten',$data);
 	}
 

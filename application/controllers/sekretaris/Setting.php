@@ -95,11 +95,18 @@ class Setting extends CI_Controller {
 
 	public function kop_laporan()
 	{
-		$data['name'] 			= $this->session->userdata('nama');
-		$data['lengkap'] 		= $this->session->userdata('lengkap');
-		$data['conten'] = 'conten_sekretaris/setting_kop';
-		$data['title'] = 'Setting Kop Laporan';
-		$data['kop']= $this->M_data->get_data_by_id('tbl_master_laporan', array('id_laporan' => 1 ));
+
+		$data = [
+			'nama'		=> $this->session->userdata('nama'),
+			'lengkap'	=> $this->session->userdata('lengkap'),
+			'conten'	=> 'conten_sekretaris/setting_kop',
+			'title'		=> 'Setting Kop Laporan',
+			'kop'		=> $this->M_data->get_data_by_id('tbl_master_laporan', array('id_laporan' => 1 )),
+			'footer_js' => array(
+				'assets/js/sweetalert2.all.min.js',
+				'assets/js/alert.js'
+			)
+		];
 		$this->load->view('template_sekretaris/conten',$data);
 	}
 
@@ -120,16 +127,23 @@ class Setting extends CI_Controller {
 			'nama_sekretaris' => $sekretaris
 		);
 		$this->M_data->update_data($table, $data, $where);
+		$this->session->set_flashdata('kop', 'Diperbarui');
 		redirect('sekretaris/Setting/kop_laporan');
 	}
 
 	public function master_kwitansi()
 	{
-		$data['name'] 			= $this->session->userdata('nama');
-		$data['lengkap'] 		= $this->session->userdata('lengkap');
-		$data['conten'] 	 = 'conten_sekretaris/master_kwitansi';
-		$data['title'] 		 = 'Setting Master Kwitansi';
-		$data['get_data'] 	 = $this->M_data->get_data_by_id('tbl_master_kwitansi',array('id_kwitansi' => 1 ));
+		$data = [
+			'name'		=> $this->session->userdata('nama'),
+			'lengkap'	=> $this->session->userdata('lengkap'),
+			'conten'	=> 'conten_sekretaris/master_kwitansi',
+			'title'		=> 'Setting Master Kwitansi',
+			'get_data'	=> $this->M_data->get_data_by_id('tbl_master_kwitansi',array('id_kwitansi' => 1 )),
+			'footer_js' => array(
+				'assets/js/sweetalert2.all.min.js',
+				'assets/js/alert.js'
+			)
+		];
 		$this->load->view('template_sekretaris/conten',$data);
 	}
 
@@ -165,11 +179,11 @@ class Setting extends CI_Controller {
 						$where = array('id_kwitansi'=> 1);
 						$this->M_data->update_data('tbl_master_kwitansi',$data,$where); //akses model untuk menyimpan ke database
 						//pesan yang muncul jika berhasil diupload pada session flashdata
-						$this->session->set_flashdata("berhasil", "<center><b>Update Foto & Data Success</b></center>");
+						$this->session->set_flashdata('berhasil', 'Diupdate');
 						redirect('sekretaris/setting/master_kwitansi');
 					}else{
 						//pesan yang muncul jika terdapat error dimasukkan pada session flashdata
-						$this->session->set_flashdata("Gagal", "<center><b>Update Foto & Data Gagal</b></center>");
+						$this->session->set_flashdata('gagal', 'Diupdate');
 						redirect('sekretaris/setting/master_kwitansi'); //jika gagal maka akan ditampilkan form upload
 					}
 			}
@@ -184,18 +198,26 @@ class Setting extends CI_Controller {
 				'id_kwitansi'=>1
 			);
 			$this->M_data->update_data('tbl_master_kwitansi',$data,$where);
-			$this->session->set_flashdata("success", "<center><b>Update Data Success</b></center>");
+			$this->session->set_flashdata('data', 'Diperbarui');
 			redirect('sekretaris/setting/master_kwitansi');
 		}
 	}
 
 	public function master_lokasi()
 	{
-		$data['name'] 			= $this->session->userdata('nama');
-		$data['lengkap'] 		= $this->session->userdata('lengkap');
-		$data['conten'] 	 	= 'conten_sekretaris/setting_lokasi';
-		$data['title'] 		 	= 'Setting Master Lokasi';
-		$data['lokasi'] 	 	= $this->M_data->get_data_by_id('tbl_master_lokasi',array('id_lokasi' => 1 ));
+
+		$data = [
+			'name'		=> $this->session->userdata('nama'),
+			'lengkap'	=> $this->session->userdata('lengkap'),
+			'conten'	=> 'conten_sekretaris/setting_lokasi',
+			'title'		=> 'Setting Master Lokasi',
+			'lokasi'	=> $this->M_data->get_data_by_id('tbl_master_lokasi',array('id_lokasi' => 1 )),
+			'footer_js' => array(
+				'assets/js/sweetalert2.all.min.js',
+				'assets/js/alert.js'
+			)
+
+		];
 		$this->load->view('template_sekretaris/conten',$data);
 	}
 
@@ -230,11 +252,11 @@ class Setting extends CI_Controller {
 						$where = array('id_lokasi'=> 1);
 						$this->M_data->update_data('tbl_master_lokasi',$data,$where); //akses model untuk menyimpan ke database
 						//pesan yang muncul jika berhasil diupload pada session flashdata
-						$this->session->set_flashdata("berhasil", "<center><b>Update Logo / Data Success</b></center>");
+						$this->session->set_flashdata('berhasil', 'Diperbarui');
 						redirect('sekretaris/setting/master_lokasi');
 					}else{
 						//pesan yang muncul jika terdapat error dimasukkan pada session flashdata
-						$this->session->set_flashdata("Gagal", "<center><b>Update Logo / Data Gagal</b></center>");
+						$this->session->set_flashdata('gagal','Diperbarui');
 						redirect('sekretaris/setting/master_lokasi'); //jika gagal maka akan ditampilkan form upload
 					}
 			}
@@ -249,21 +271,27 @@ class Setting extends CI_Controller {
 				'id_lokasi'=>1
 			);
 			$this->M_data->update_data('tbl_master_lokasi',$data,$where);
-			$this->session->set_flashdata("success", "<center><b>Update Data Lokasi Success</b></center>");
+			$this->session->set_flashdata('lokasi','Diperbarui');
 			redirect('sekretaris/setting/master_lokasi');
 		}
 	}
 
-	public function ubah_sandi($id){
-		$data['name'] = $this->session->userdata('nama');
-		$data['lengkap'] 		= $this->session->userdata('lengkap');
-		$data['title'] = 'Ubah Password';
-    	$data['conten']= 'conten_sekretaris/ubah_sandi';
-		$data['hadir']= $this->M_data->get_data_by_id('tbl_user', array('id_user' => $this->session->userdata('id_petugas')));
+	public function ubah_sandi(){
+		$data = [
+			'name'		=> $this->session->userdata('nama'),
+			'lengkap'	=> $this->session->userdata('lengkap'),
+			'title'		=> 'Ubah Password',
+			'conten'	=> 'conten_sekretaris/ubah_sandi',
+			'hadir'		=> $this->M_data->get_data_by_id('tbl_user', array('id_user' => $this->session->userdata('id_petugas'))),
+			'footer_js' => array(
+				'assets/js/sweetalert2.all.min.js',
+				'assets/js/alert.js'
+			)
+		];
     	$this->load->view('template_sekretaris/conten',$data);
 	}
 
-	public function update_sandi($id)
+	public function update_sandi()
 	{
 		$np = md5($this->input->post('newpass'));
 		$ket = $this->input->post('repeat');
@@ -271,6 +299,7 @@ class Setting extends CI_Controller {
 		$data = array('password' =>$np, 'ket_pass' => $ket);
 		$where = array('id_user' => $this->session->userdata('id_petugas'));
 		$this->M_data->update_data($table,$data,$where);
+		$this->session->set_flashdata('sandi', 'Diperbarui');
 		redirect('sekretaris/Setting/ubah_sandi');
 	}
 }

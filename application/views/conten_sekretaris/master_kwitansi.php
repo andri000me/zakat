@@ -9,6 +9,15 @@ foreach ($get_data->result() as $row) {
 ?>
 
 <div class="right_col" role="main">
+  <div class="flash-kwitansi" data-flashdata="<?= $this->session->flashdata('data') ?>"></div>
+  <?php
+      if($this->session->flashdata('gagal')==TRUE){ ?>
+            <div class="flash-gagal-gambar" data-flashdata="<?= $this->session->flashdata('gagal') ?>"></div>
+      <?php } ?>
+      <?php
+      if($this->session->flashdata('berhasil')==TRUE){ ?>
+            <div class="flash-berhasil-gambar" data-flashdata="<?= $this->session->flashdata('berhasil') ?>"></div>
+      <?php } ?>
           <div class="">
             <div class="page-title">
               <div class="title_left">
@@ -30,7 +39,7 @@ foreach ($get_data->result() as $row) {
             <div class="clearfix"></div>
 
             <div class="row">
-            <form method="post" action="<?php echo base_url('admin/Setting/update_master') ?>"  enctype="multipart/form-data" accept-charset="utf-8">
+            <form method="post" action="<?php echo base_url('sekretaris/Setting/update_master') ?>"  enctype="multipart/form-data" accept-charset="utf-8">
               <div class="col-md-6 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
@@ -53,27 +62,6 @@ foreach ($get_data->result() as $row) {
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                      <?php
-                              if($this->session->flashdata('gagal')==TRUE){ ?>
-                                    <div class="alert alert-danger alert-dismissable">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                      <?php echo $this->session->flashdata('gagal') ?>
-                                    </div>
-                              <?php } ?>
-                              <?php
-                              if($this->session->flashdata('berhasil')==TRUE){ ?>
-                                    <div class="alert alert-success alert-dismissable">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                      <?php echo $this->session->flashdata('berhasil') ?>
-                                    </div>
-                              <?php } ?>
-                              <?php
-                              if($this->session->flashdata('success')==TRUE){ ?>
-                                    <div class="alert alert-success alert-dismissable">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                      <?php echo $this->session->flashdata('success') ?>
-                                    </div>
-                              <?php } ?>
                         <label for="fullname">Logo Organisasi * :</label>
                         <input type="file" class="form-control" name="filefoto" /><br>
                         <img width="25%" src="<?php echo base_url('assets/img/'.$logo) ?>">
