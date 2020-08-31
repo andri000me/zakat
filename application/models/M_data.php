@@ -444,4 +444,9 @@ class M_data extends CI_Model
     // $query = $this->db->get();
     // return $query->result(); 
   }
+
+  public function hasil_kriteria()
+  {
+    return $this->db->query("SELECT * FROM tbl_spk_kriteria ORDER BY id_kriteria DESC LIMIT 1 ");
+  }
 }
