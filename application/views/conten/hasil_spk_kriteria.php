@@ -6,14 +6,6 @@
             <div class="title_left">
                 <h3>Hasil Perhitungan SPK AHP</h3>
             </div>
-            <?php
-            $a = '0.298';
-            if ($a > '0.199') {
-                echo "Ulangi Perhitungan";
-            } else {
-                echo "Aman";
-            }
-            ?>
 
             <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
@@ -52,7 +44,6 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-
                         <table class="table table-bordered">
                             <thead>
                                 <tr>

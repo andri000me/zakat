@@ -449,4 +449,29 @@ class M_data extends CI_Model
   {
     return $this->db->query("SELECT * FROM tbl_spk_kriteria ORDER BY id_kriteria DESC LIMIT 1 ");
   }
+
+  public function hasil_ghorim()
+  {
+    return $this->db->query("SELECT * FROM tbl_alt_ghorim ORDER BY id_alt_ghorim DESC LIMIT 1 ");
+  }
+
+  public function hasil_budak()
+  {
+    return $this->db->query("SELECT * FROM tbl_alt_budak ORDER BY id_alt_budak DESC LIMIT 1 ");
+  }
+
+  public function hasil_miskin()
+  {
+    return $this->db->query("SELECT * FROM tbl_alt_miskin ORDER BY id_alt_miskin DESC LIMIT 1 ");
+  }
+
+  public function hasil_ibnu_sabil()
+  {
+    return $this->db->query("SELECT * FROM tbl_alt_ibnu_sabil ORDER BY id_alt_ibnu_sabil DESC LIMIT 1 ");
+  }
+
+  public function hasil_mualaf()
+  {
+    return $this->db->query("SELECT * FROM tbl_alt_mualaf ORDER BY id_alt_mualaf DESC LIMIT 1 ");
+  }
 }
