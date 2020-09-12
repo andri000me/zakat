@@ -259,7 +259,7 @@ class Perhitungan extends CI_Controller
 
         );
         $this->M_data->simpan_data($table, $data);
-        redirect('admin/perhitungan/hasil_alt_miskin');
+        redirect('admin/perhitungan/hasil_alt_miskn');
     }
 
     public function alt_ibnu_sabil()
@@ -375,7 +375,12 @@ class Perhitungan extends CI_Controller
             'lengkap'     => $this->session->userdata('lengkap'),
             'conten'      => 'conten/hasil_perangkingan',
             'title'       => 'Hasil Perangkingan',
-            // 'mualaf'  => $this->M_data->hasil_mualaf(),
+            'kriteria'    => $this->M_data->hasil_kriteria(),
+            'ghorim'      => $this->M_data->hasil_ghorim(),
+            'budak'       => $this->M_data->hasil_budak(),
+            'miskin'      => $this->M_data->hasil_miskin(),
+            'ibnu_sabil'  => $this->M_data->hasil_ibnu_sabil(),
+            'mualaf'      => $this->M_data->hasil_mualaf(),
             'footer_js'   => array(
                 'assets/js/ahp.js',
                 'assets/js/sweetalert2.all.min.js',
@@ -383,5 +388,22 @@ class Perhitungan extends CI_Controller
             )
         ];
         $this->load->view('template/conten', $data);
+    }
+
+    public function simpan_rank()
+    {
+        $table = 'tbl_rank';
+        $data = array(
+            'fakir' => $this->input->post('rank1'),
+            'sabil' => $this->input->post('rank2'),
+            'amil'  => $this->input->post('rank3'),
+        );
+        $simpan = $this->db->insert($table, $data);
+        if ($simpan) {
+            $output = array('status' => true);
+        } else {
+            $output = array('status' => false);
+        }
+        echo json_encode($output);
     }
 }

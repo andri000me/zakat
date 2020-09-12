@@ -47,7 +47,7 @@
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th>Miskin</th>
+                                    <th>Mualaf</th>
                                     <th>Fakir</th>
                                     <th>Sabil</th>
                                     <th>Amil</th>

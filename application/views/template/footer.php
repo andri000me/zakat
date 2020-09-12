@@ -79,6 +79,10 @@ if (isset($footer_js)) {
   }
 </script>
 
+<script>
+  var base_url = "<?php echo base_url(); ?>";
+</script>
+
 
 <!-- <script src="<?php echo base_url() . 'assets/js/jquery-3.3.1.js' ?>" type="text/javascript"></script>
     <script src="<?php echo base_url() . 'assets/js/bootstrap.js' ?>" type="text/javascript"></script>

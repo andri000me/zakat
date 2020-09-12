@@ -78,4 +78,21 @@ $(document).ready(function ($) {
         let C54 = C44 / C45;
         $("#C54").val(C54);
     });
+
+    // Rank
+    var rank1 = $('#rank1').val();
+    var rank2 = $('#rank2').val();
+    var rank3 = $('#rank3').val();
+    if (rank1) {
+        $.ajax({
+            url: base_url + "admin/perhitungan/simpan_rank",
+            method: "POST",
+            data: { rank1: rank1, rank2: rank2, rank3: rank3 },
+            async: false,
+            dataType: 'json',
+            success: function (data) {
+                alert('Data Perangkingan Berhasil Di simpan');
+            }
+        });
+    }
 });
