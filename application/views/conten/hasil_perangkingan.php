@@ -286,11 +286,11 @@ foreach ($mualaf->result() as $row) {
                     <div class="x_content">
 
 
-                        Fakir = <?= $rank1 = round(($rata1 * $rg1) + ($rata2 * $rb1) + ($rata3 * $rm1) + ($rata4 * $rIS1) + ($rata5 * $rMU1), 3) ?>
+                        <?php $rank1 = round(($rata1 * $rg1) + ($rata2 * $rb1) + ($rata3 * $rm1) + ($rata4 * $rIS1) + ($rata5 * $rMU1), 3) ?>
                         <br>
-                        Sabil = <?= $rank2 = round(($rata1 * $rg2) + ($rata2 * $rb2) + ($rata3 * $rm2) + ($rata4 * $rIS2) + ($rata5 * $rMU2), 3) ?>
+                        <?php $rank2 = round(($rata1 * $rg2) + ($rata2 * $rb2) + ($rata3 * $rm2) + ($rata4 * $rIS2) + ($rata5 * $rMU2), 3) ?>
                         <br>
-                        Amil = <?= $rank3 = round(($rata1 * $rg3) + ($rata2 * $rb3) + ($rata3 * $rm3) + ($rata4 * $rIS3) + ($rata5 * $rMU3), 3) ?>
+                        <?php $rank3 = round(($rata1 * $rg3) + ($rata2 * $rb3) + ($rata3 * $rm3) + ($rata4 * $rIS3) + ($rata5 * $rMU3), 3) ?>
 
                         <input type="hidden" id="rank1" value="<?= $rank1 ?>">
                         <input type="hidden" id="rank2" value="<?= $rank2 ?>">
@@ -299,30 +299,23 @@ foreach ($mualaf->result() as $row) {
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Username</th>
+                                    <th colspan="2">
+                                        <center> HASIL PERANKINGAN </center>
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
+                                    <th scope="row">Fakir</th>
+                                    <td><?= $rank1 ?></td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
+                                    <th scope="row">Sabil</th>
+                                    <td><?= $rank2 ?></td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
+                                    <th scope="row">Amil</th>
+                                    <td><?= $rank3 ?></td>
                                 </tr>
                             </tbody>
                         </table>
