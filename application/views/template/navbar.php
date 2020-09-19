@@ -73,6 +73,7 @@
 
 
                 <li><a href="<?= base_url('admin/perhitungan') ?>"><i class="fa fa-calculator"></i> Perhitungan Metode AHP </a></li>
+                <li><a href="<?= base_url('admin/hasil') ?>"><i class="fa fa-print"></i> Cetak Perhitungan Metode AHP </a></li>
               </ul>
             </div>
 

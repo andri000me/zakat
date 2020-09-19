@@ -474,4 +474,9 @@ class M_data extends CI_Model
   {
     return $this->db->query("SELECT * FROM tbl_alt_mualaf ORDER BY id_alt_mualaf DESC LIMIT 1 ");
   }
+
+  public function hasil_rank()
+  {
+    return $this->db->query("SELECT * FROM tbl_rank ORDER BY id_rank DESC LIMIT 1 ");
+  }
 }
