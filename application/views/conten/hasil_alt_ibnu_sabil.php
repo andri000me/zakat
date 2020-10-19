@@ -74,13 +74,13 @@
                                         <td><?= $IS13 ?></td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">Amil</th>
+                                        <th scope="row">Sabil</th>
                                         <td><?= round($IS21, 3) ?></td>
                                         <td><?= round($IS22, 3) ?></td>
                                         <td><?= round($IS23, 3) ?></td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">Sabil</th>
+                                        <th scope="row">Amil</th>
                                         <td><?= round($IS31, 3) ?></td>
                                         <td><?= round($IS32, 3) ?></td>
                                         <td><?= round($IS33, 3) ?></td>

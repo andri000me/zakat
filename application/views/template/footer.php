@@ -1,7 +1,7 @@
 <!-- footer content -->
 <footer>
   <div class="pull-right">
-    Aplikasi Zakat Fitrah & Maal v1.0 By <strong> M.F.F Multimedia</strong>
+    SPK Zakat <strong> fizekronus.com</strong>
   </div>
   <div class="clearfix"></div>
 </footer>

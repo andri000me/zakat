@@ -4,7 +4,7 @@
       <div class="col-md-3 left_col">
         <div class="left_col scroll-view">
           <div class="navbar nav_title" style="border: 0;">
-            <a href="index.html" class="site_title"><i class="fa fa-heart"></i> <span>Zakat Online</span></a>
+            <a href="index.html" class="site_title"><i class="fa fa-heart"></i> <span>SPK - Zakat</span></a>
           </div>
 
           <div class="clearfix"></div>
@@ -12,7 +12,7 @@
           <!-- menu profile quick info -->
           <div class="profile clearfix">
             <div class="profile_pic">
-              <img src="<?php echo base_url('') ?>assets/template/production/images/img.jpg" alt="..." class="img-circle profile_img">
+              <img src="<?php echo site_url('') ?>assets/template/production/images/img.jpg" alt="..." class="img-circle profile_img">
             </div>
             <div class="profile_info">
               <span>Welcome,</span>
@@ -28,52 +28,52 @@
             <div class="menu_section">
               <h3>General</h3>
               <ul class="nav side-menu">
-                <li><a href="<?php echo base_url('admin/Dashboard') ?>"><i class="fa fa-home"></i> Dashboard </a>
+                <li><a href="<?php echo site_url('admin/Dashboard') ?>"><i class="fa fa-home"></i> Dashboard </a>
                 </li>
 
-                <!-- <li><a href="<?php echo base_url('admin/fitrah') ?>"><i class="fa  fa-heart"></i> Zakat Fitrah </a>
+                <!-- <li><a href="<?php echo site_url('admin/fitrah') ?>"><i class="fa  fa-heart"></i> Zakat Fitrah </a>
                 </li>
 
-                <li><a href="<?php echo base_url('admin/maal') ?>"><i class="fa fa-money"></i> Zakat Mall </a>
+                <li><a href="<?php echo site_url('admin/maal') ?>"><i class="fa fa-money"></i> Zakat Mall </a>
                 </li>
 
-                <li><a href="<?php echo base_url('admin/penerima') ?>"><i class="fa  fa-wheelchair"></i> Data Penerima Zakat </a>
+                <li><a href="<?php echo site_url('admin/penerima') ?>"><i class="fa  fa-wheelchair"></i> Data Penerima Zakat </a>
                 </li>
 
-                <li><a href="<?php echo base_url('admin/donatur') ?>"><i class="fa  fa-plus-square"></i> Data Donatur Zakat </a>
+                <li><a href="<?php echo site_url('admin/donatur') ?>"><i class="fa  fa-plus-square"></i> Data Donatur Zakat </a>
                 </li>
 
-                <li><a href="<?php echo base_url('admin/Panitia') ?>"><i class="fa fa-users"></i> Data Panitia </a></li>
+                <li><a href="<?php echo site_url('admin/Panitia') ?>"><i class="fa fa-users"></i> Data Panitia </a></li>
 
-                <li><a href="<?php echo base_url('admin/Laporan') ?>"><i class="fa fa-book"></i> Laporan Zakat </a></li>
+                <li><a href="<?php echo site_url('admin/Laporan') ?>"><i class="fa fa-book"></i> Laporan Zakat </a></li>
 
-                <li><a href="<?php echo base_url('admin/Setting/kop_laporan') ?>"><i class="fa fa-gear"></i> Setting Kop </a></li>
+                <li><a href="<?php echo site_url('admin/Setting/kop_laporan') ?>"><i class="fa fa-gear"></i> Setting Kop </a></li>
 
-                <li><a href="<?php echo base_url('admin/Setting/master_kwitansi') ?>"><i class="fa fa-envelope"></i> Setting Kwitansi </a></li>
+                <li><a href="<?php echo site_url('admin/Setting/master_kwitansi') ?>"><i class="fa fa-envelope"></i> Setting Kwitansi </a></li>
 
                 <li><a><i class="fa fa-gears"></i> Setting User <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
-                    <li><a href="<?php echo base_url('admin/Setting') ?>">User Petugas </a></li>
-                    <li><a href="<?php echo base_url('admin/Setting/user_koor') ?>">User Koordinator</a></li>
+                    <li><a href="<?php echo site_url('admin/Setting') ?>">User Petugas </a></li>
+                    <li><a href="<?php echo site_url('admin/Setting/user_koor') ?>">User Koordinator</a></li>
                   </ul>
                 </li>
 
-                <li><a href="<?php echo base_url('admin/Setting/master_lokasi') ?>"><i class="fa fa-location-arrow"></i> Setting Lokasi </a></li>
+                <li><a href="<?php echo site_url('admin/Setting/master_lokasi') ?>"><i class="fa fa-location-arrow"></i> Setting Lokasi </a></li>
 
-                <li><a href="<?php echo base_url('admin/Setting/backup_data') ?>"><i class="fa  fa-cloud-download"></i> Backup Data </a></li> -->
-                <li><a href="<?= base_url('admin/Penduduk') ?>"><i class="fa fa-users"></i> Data penduduk </a></li>
+                <li><a href="<?php echo site_url('admin/Setting/backup_data') ?>"><i class="fa  fa-cloud-download"></i> Backup Data </a></li> -->
+                <li><a href="<?= site_url('admin/Penduduk') ?>"><i class="fa fa-users"></i> Data penduduk </a></li>
 
                 <li><a><i class="fa fa-terminal"></i> Master Data <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
-                    <li><a href="<?= base_url('admin/bobot') ?>"> Master Bobot </a></li>
-                    <li><a href="<?= base_url('admin/kriteria') ?>"> Data Kriteria </a></li>
-                    <li><a href="<?php echo base_url('admin/alternatif') ?>">Data Alternatif</a></li>
+                    <li><a href="<?= site_url('admin/bobot') ?>"> Master Bobot </a></li>
+                    <li><a href="<?= site_url('admin/kriteria') ?>"> Data Kriteria </a></li>
+                    <li><a href="<?php echo site_url('admin/alternatif') ?>">Data Alternatif</a></li>
                   </ul>
                 </li>
 
 
-                <li><a href="<?= base_url('admin/perhitungan') ?>"><i class="fa fa-calculator"></i> Perhitungan Metode AHP </a></li>
-                <li><a href="<?= base_url('admin/hasil') ?>"><i class="fa fa-print"></i> Cetak Perhitungan Metode AHP </a></li>
+                <li><a href="<?= site_url('admin/perhitungan') ?>"><i class="fa fa-calculator"></i> Perhitungan Metode AHP </a></li>
+                <li><a href="<?= site_url('admin/hasil') ?>"><i class="fa fa-print"></i> Cetak Perhitungan Metode AHP </a></li>
               </ul>
             </div>
 
@@ -91,7 +91,7 @@
               <a data-toggle="tooltip" data-placement="top" title="Lock">
                 <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
               </a> -->
-            <a data-toggle="tooltip" data-placement="top" title="Logout" href="<?php echo base_url('login/logout') ?>">
+            <a data-toggle="tooltip" data-placement="top" title="Logout" href="<?php echo site_url('login/logout') ?>">
               <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
             </a>
           </div>
@@ -110,12 +110,12 @@
             <ul class="nav navbar-nav navbar-right">
               <li class="">
                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                  <img src="<?php echo base_url('') ?>assets/template/production/images/img.jpg" alt=""><?php echo  $lengkap; ?>
+                  <img src="<?php echo site_url('') ?>assets/template/production/images/img.jpg" alt=""><?php echo  $lengkap; ?>
                   <span class=" fa fa-angle-down"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-usermenu pull-right">
-                  <li><a href="<?php echo base_url('koor/setting/ubah_sandi') ?>"><i class="fa fa-user pull-right"></i> Setting Profile</a></li>
-                  <li><a href="<?php echo base_url('login/logout') ?>"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                  <li><a href="<?php echo site_url('koor/setting/ubah_sandi') ?>"><i class="fa fa-user pull-right"></i> Setting Profile</a></li>
+                  <li><a href="<?php echo site_url('login/logout') ?>"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                 </ul>
               </li>
 

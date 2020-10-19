@@ -85,7 +85,7 @@
 
                                     <!-- Amil -->
                                     <tr>
-                                        <td>Amil</td>
+                                        <td>Sabil</td>
                                         <td>
                                             <input type="number" class="form-control" id="C43" name="IS21" readonly value="0">
                                         </td>
@@ -106,7 +106,7 @@
 
                                     <!-- Sabil -->
                                     <tr>
-                                        <td>Sabil</td>
+                                        <td>Amil</td>
                                         <td>
                                             <input type="number" class="form-control" id="C53" name="IS31" readonly value="0">
                                         </td>

@@ -83,9 +83,9 @@
                                     </tr>
                                     <!-- End Fakir -->
 
-                                    <!-- Amil -->
+                                    <!-- Sabil -->
                                     <tr>
-                                        <td>Amil</td>
+                                        <td>Sabil</td>
                                         <td>
                                             <input type="number" class="form-control" id="C43" name="G21" readonly value="0">
                                         </td>
@@ -102,11 +102,11 @@
                                             </select>
                                         </td>
                                     </tr>
-                                    <!-- End Amil -->
+                                    <!-- End Sabil -->
 
-                                    <!-- Sabil -->
+                                    <!-- Amil -->
                                     <tr>
-                                        <td>Sabil</td>
+                                        <td>Amil</td>
                                         <td>
                                             <input type="number" class="form-control" id="C53" name="G31" readonly value="0">
                                         </td>
@@ -117,7 +117,7 @@
                                             <input type="number" class="form-control" id="C55" name="G33" readonly value="1">
                                         </td>
                                     </tr>
-                                    <!-- End Sabil -->
+                                    <!-- End Amil -->
                                     <button type="submit" class="btn btn-primary"><i class="fa fa-calculator"></i>| Hitung</button>
 
                                 </tbody>
