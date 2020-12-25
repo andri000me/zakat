@@ -8,6 +8,7 @@ class Penduduk extends CI_Controller {
 				redirect(base_url("login"));
 			}
 		/*$this->load->library('Pdf');*/
+		$this->load->library('PHPExcel');
 	 }
 
 	public function index()
@@ -17,7 +18,7 @@ class Penduduk extends CI_Controller {
 			'lengkap'	=> $this->session->userdata('lengkap'),
 			'conten'	=> 'conten/data_penduduk',
 			'title'		=> 'Data Penduduk',
-			// 'penduduk'	=> $this->M_data->zakat_fitrah(),
+			'penduduk'	=> $this->M_data->get_data('tbl_penduduk'),
 			'header_css'=> array(
 				'assets/template/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css',
 				'assets/template/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css',
@@ -108,4 +109,62 @@ class Penduduk extends CI_Controller {
 		$this->session->set_flashdata('fitrah', 'Dihapus');
 		redirect('admin/Fitrah');
 	}
+
+	public function tambah_data_penduduk()
+	{
+		$table = 'tbl_penduduk';
+		$data = array(
+			'nama_penduduk'		=> $this->input->post('nama'),
+			'profesi'			=> $this->input->post('pekerjaan'),
+			'penghasilan'		=> $this->input->post('penghasilan'),
+			'pengeluaran'		=> $this->input->post('pengeluaran'),
+			'hutang'			=> $this->input->post('hutang'),
+			'alamat'			=> $this->input->post('alamat'),
+			'status_agama'		=> $this->input->post('status')
+		);
+		$this->M_data->simpan_data($table, $data);
+		redirect('admin/penduduk');
+	}
+
+	public function edit_data_penduduk($id)
+	{
+		$table = 'tbl_penduduk';
+		$data = array(
+			'nama_penduduk'		=> $this->input->post('nama'),
+			'profesi'			=> $this->input->post('pekerjaan'),
+			'penghasilan'		=> $this->input->post('penghasilan'),
+			'pengeluaran'		=> $this->input->post('pengeluaran'),
+			'hutang'			=> $this->input->post('hutang'),
+			'alamat'			=> $this->input->post('alamat'),
+			'status_agama'		=> $this->input->post('status')
+		);
+		$where = array('id_zakat_fitrah' => $id);
+		$this->M_data->update_data($table, $data, $where);
+		redirect('admin/penduduk');
+	}
+
+
+	public function import_penduduk()
+    {
+        $config['upload_path'] = './assets/penduduk/';
+        $config['allowed_types'] = 'xlsx|xls';
+
+        $this->load->library('upload');
+        $this->upload->initialize($config);
+
+        if (!$this->upload->do_upload()) {
+            $this->session->set_flashdata("gagal", "<center><strong>Import Failed !!!</strong></center>");
+            redirect('admin/Penduduk');
+            // print_r('gagal');
+        } else {
+            $data = array('upload_data' => $this->upload->data());
+            $upload_data = $this->upload->data(); //Returns array of containing all of the data related to the file you uploaded.
+            $filename = $upload_data['file_name'];
+            $this->M_data->upload_data_penduduk($filename);
+            unlink('./assets/doc/' . $filename);
+            $this->session->set_flashdata("berhasil", "<center><strong>Import Successfully!!!</strong></center>");
+            redirect('admin/Penduduk');
+        }
+	}
+	
 }

@@ -55,6 +55,36 @@ class M_data extends CI_Model
     }
   }
 
+
+  public function upload_data_penduduk($filename)
+  {
+    ini_set('memory_limit', '-1');
+    $inputFileName = './assets/penduduk/' . $filename;
+    try {
+      $objPHPExcel = PHPExcel_IOFactory::load($inputFileName);
+    } catch (Exception $e) {
+      die('Error loading file :' . $e->getMessage());
+    }
+
+    $worksheet = $objPHPExcel->getActiveSheet()->toArray(null, true, true, true);
+    $numRows = count($worksheet);
+
+    for ($i = 2; $i < ($numRows + 1); $i++) {
+
+      $ins = array(
+        "nama_penduduk"        => $worksheet[$i]["B"],
+        "profesi"              => $worksheet[$i]["C"],
+        "penghasilan"          => $worksheet[$i]["D"],
+        "pengeluaran"          => $worksheet[$i]["E"],
+        "hutang"               => $worksheet[$i]["F"],
+        "alamat"               => $worksheet[$i]["G"],
+        "status_agama"         => $worksheet[$i]["H"]
+      );
+      $this->db->insert('tbl_penduduk', $ins);
+    }
+  }
+
+
   public function jumlah_koor()
   {
     $query = $this->db->query("SELECT * FROM tbl_koordinator");
